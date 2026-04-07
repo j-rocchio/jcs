@@ -1,0 +1,17 @@
+{
+	"a": "interger, 4, 0",
+	"b": "integer, 8, 10101111",
+	"c": "float, 4, 123.01234567890123456789",
+	"d": "float, 8, 123.01234567890123456789",
+	"e": "boolean, 4, true",
+	"f": "string, 16, null",
+	"g": "string, 32, \"hello world\"",
+	"h":
+	{
+		"ha": "integer, 8, 1",
+		"hb": "integer, 4, 0101000",
+		"hc": "float, 4, 456.123",
+		"hd": "boolean, 8, false",
+		"hf": "string, 40 \"world, hello\""
+	}
+}

@@ -1,5 +1,6 @@
-make_test=false
 make_lib=false
+make_test=false
+make_gen=false
 
 for arg in "$@";
 do
@@ -16,6 +17,10 @@ do
 	if [ "$arg" == "test" ]; then
 		make_test=true
   	fi
+
+  	if [ "$arg" == "gen" ]; then
+		make_gen=true
+  	fi
 done
 
 if [ "$make_lib" == true ]; then
@@ -25,6 +30,16 @@ if [ "$make_lib" == true ]; then
 	cmake ..
 	cmake --build . --target jcs_shared jcs_static
 	mv libjcs* ../output
+	\cp -a ../src/*h ../output
+	cd ..
+fi
+
+if [ "$make_gen" == true ]; then
+	mkdir -p build
+	cd build
+	cmake ..
+	cmake --build . --target jcs_gen
+	mv jcs_gen ../output
 	cd ..
 fi
 
@@ -33,7 +48,8 @@ if [ "$make_test" == true ]; then
 	cd build
 	cmake ..
 	cmake --build . --target test
-	./test
 	mv test ../test
+	cd ../test
+	./test
 	cd ..
 fi
